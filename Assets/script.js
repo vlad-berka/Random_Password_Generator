@@ -27,52 +27,50 @@ function generatePassword() {
   // Initializing an empty array to add separate characters for the password
   // Password to be converted into a string at the end
   var password = [];
-  var trackstring = "";
+
+  // Initializing the password length to allow the while loop to run
+  var password_length = 0;
 
   // Asks the user for the length of the desired password, must be at least 8, no more than 128
-  var password_length = 0;
   while (password_length < 8 || password_length > 128) {
     password_length = prompt("Please enter the length of your desired password", "Password Length (Between 8 up to 128)");
   }
   alert("You've chosen to randomly generate a password of length: " +password_length);
 
   // Asks the user to use lower case letters
-  // If yes, add a random lower case letter to the password, add all lower case letters to the BIG hat to pull from later
+  // If yes: add a random lower case letter to the password, add all lower case letters to the BIG hat to pull from later
   var bool_lower = false;
   if (confirm("Do you wish to use lower case letters?")) {
     bool_lower = true;
     password.push(array_lower[Math.floor(Math.random() * array_lower.length)]);
     full_char_array = full_char_array.concat(array_lower);
     alert("You've chosen to generate a password that includes lower case letters");
-    // trackstring = trackstring + "lower case letters, "; 
   } 
   else {
     alert("NO LOWER CASE LETTERS WILL BE USED IN THE PASSWORD");
   } 
 
   // Asks the user to use upper case letters
-  // If yes, add a random upper case letter to the password, add all upper case letters to the BIG hat to pull from later
+  // If yes: add a random upper case letter to the password, add all upper case letters to the BIG hat to pull from later
   var bool_upper = false;
   if (confirm("Do you wish to use upper case letters?")) {
     bool_upper = true;
     password.push(array_upper[Math.floor(Math.random() * array_upper.length)]);
     full_char_array = full_char_array.concat(array_upper);
     alert("You've chosen to generate a password that includes upper case letters");
-    // trackstring = trackstring + "upper case letters, "; 
   } 
   else {
     alert("NO UPPER CASE LETTERS WILL BE USED IN THE PASSWORD");
   } 
 
   // Asks the user to use special characters
-  // If yes, add a random special character to the password, add all special characters to the BIG hat to pull from later
+  // If yes: add a random special character to the password, add all special characters to the BIG hat to pull from later
   var bool_special = false;
   if (confirm("Do you wish to use special characters?")) {
     bool_special = true;
     password.push(array_special[Math.floor(Math.random() * array_special.length)]);
     full_char_array = full_char_array.concat(array_special);
     alert("You've chosen to generate a password that includes special characters");
-    // trackstring = trackstring + "special characters, "; 
   } 
   else {
     alert("NO SPECIAL CHARACTERS WILL BE USED IN THE PASSWORD");
@@ -88,7 +86,6 @@ function generatePassword() {
       password.push(array_num[Math.floor(Math.random() * array_num.length)]);
       full_char_array = full_char_array.concat(array_num);
   }
-  // Asks the user to use numbers
   // If yes, add a random number to the password add all numbers to the BIG hat to pull from later
   else {
     if (confirm("Do you wish to use numbers?")) {
@@ -96,7 +93,6 @@ function generatePassword() {
       password.push(array_num[Math.floor(Math.random() * array_num.length)]);
       full_char_array = full_char_array.concat(array_num);
       alert("You've chosen to generate a password that includes numbers");
-      // trackstring = trackstring + "numbers, ";
     } 
     else {
       alert("NO NUMBERS WILL BE USED IN THE PASSWORD");
@@ -113,8 +109,8 @@ function generatePassword() {
   
   // alert("You have chosen to make a password of length: " +password.length+ " with " +trackstring);
   // Converting the array into a string and returning the string
-  password_string = password.join("");
-  alert("Your password is: " +password_string);
+  var password_string = password.join("");
+  // alert("Your password is: " +password_string);
 
   return password_string;
 }
